@@ -54,6 +54,8 @@ function clearAllFilms(){
     if(confirm("emin misiniz?")){
         ui.clearAllFilmsFromUI();
         storage.clearAllFilmsFromStorage();  
+        location.reload();
+        // sayfayi yenileyemiyorduk
     }
     
 }
