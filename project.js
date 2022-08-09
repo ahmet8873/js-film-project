@@ -3,6 +3,7 @@ const titleElement=document.querySelector("#title");
 const directorElement=document.querySelector("#director");
 const urlElement=document.querySelector("#url");
 const cardBody=document.querySelectorAll(".card-body")[1];
+const clear=document.getElementById("clear-films");
 
 const ui=new UI();
 const storage=new Storage();
@@ -15,6 +16,7 @@ function eventListeners(){
         ui.loadAllFilms(films);
     })
     cardBody.addEventListener("click",deleteFilm);
+    clear.addEventListener("click",clearAllFilms);
 
 }
 
@@ -42,9 +44,16 @@ function  addFilm(e){
 function deleteFilm(e){
     if(e.target.id="delete-film"){
         ui.deleteFilmFromUI(e.target);
-        console.log(e.target.parentElement.previousElementSibling.previousElementSibling.textContent);
+        // console.log(e.target.parentElement.previousElementSibling.previousElementSibling.textContent);
         storage.deleteFilmFromStorage(e.target.parentElement.previousElementSibling.previousElementSibling.textContent);
         ui.displayMassages("silme islemi basarili..","success");
         
     }
+}
+function clearAllFilms(){
+    if(confirm("emin misiniz?")){
+        ui.clearAllFilmsFromUI();
+        storage.clearAllFilmsFromStorage();  
+    }
+    
 }
