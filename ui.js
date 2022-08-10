@@ -1,7 +1,5 @@
-function UI(){
-
-};
-UI.prototype.addFilmToUI=function (newFilm){
+class UI{
+  static addFilmToUI(newFilm){
      
     const filmList=document.getElementById("films");
     
@@ -12,12 +10,12 @@ UI.prototype.addFilmToUI=function (newFilm){
     <td><a href="#" id = "delete-film" class = "btn btn-danger">Filmi Sil</a></td>
   </tr> `
 };
-UI.prototype.clearInputs=function (e1,e2,e3){
+static clearInputs(e1,e2,e3){
     e1.value="";
     e2.value="";
     e3.value="";
 };
-UI.prototype.displayMassages=function (message,type){
+static displayMassages(message,type){
   const cardBody=document.querySelector(".card-body");
   const div=document.createElement("div");
   div.className=`alert alert-${type}`;
@@ -30,7 +28,7 @@ UI.prototype.displayMassages=function (message,type){
 
 }
 
-UI.prototype.loadAllFilms=function(films){
+static loadAllFilms(films){
   const filmList=document.getElementById("films");
   films.forEach(function(film){
     filmList.innerHTML+= `  <tr>
@@ -42,13 +40,16 @@ UI.prototype.loadAllFilms=function(films){
   })
 
 }
-UI.prototype.deleteFilmFromUI=function(element){
+static deleteFilmFromUI(element){
   element.parentElement.parentElement.remove();
 }
-UI.prototype.clearAllFilmsFromUI=function(){
+static clearAllFilmsFromUI(){
   const filmList=document.getElementById("films");
   
   while(filmList.firstElementChild !== null){
     filmList.firstElementChild.remove();
   }
+}
+
+
 }
